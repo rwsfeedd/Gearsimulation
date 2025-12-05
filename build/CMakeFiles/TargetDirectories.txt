@@ -1,0 +1,4 @@
+/home/samu/Schreibtisch/Projects/gearSimulation/build/CMakeFiles/Gearsimulation.dir
+/home/samu/Schreibtisch/Projects/gearSimulation/build/CMakeFiles/MyLibrary.dir
+/home/samu/Schreibtisch/Projects/gearSimulation/build/CMakeFiles/edit_cache.dir
+/home/samu/Schreibtisch/Projects/gearSimulation/build/CMakeFiles/rebuild_cache.dir

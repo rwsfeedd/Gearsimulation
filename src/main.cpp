@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <SFML/Graphics.hpp>
-#include "Gear.hpp"
+//#include "include/Gear.hpp"
 
 using namespace std;
 
