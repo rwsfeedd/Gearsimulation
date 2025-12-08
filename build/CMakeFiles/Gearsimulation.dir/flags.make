@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/samu/Schreibtisch/Projects/gearSimulation/include
+CXX_INCLUDES = -I/home/samu/Schreibtisch/Projects/gearSimulation/src -I/home/samu/Schreibtisch/Projects/gearSimulation/include
 
 CXX_FLAGS = 
 

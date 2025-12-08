@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Gearsimulation
-
-# Build rule for target.
-Gearsimulation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Gearsimulation
-.PHONY : Gearsimulation
-
-# fast build rule for target.
-Gearsimulation/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Gearsimulation.dir/build.make CMakeFiles/Gearsimulation.dir/build
-.PHONY : Gearsimulation/fast
-
-#=============================================================================
 # Target rules for targets named MyLibrary
 
 # Build rule for target.
@@ -142,12 +129,24 @@ MyLibrary/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/build
 .PHONY : MyLibrary/fast
 
+#=============================================================================
+# Target rules for targets named Gearsimulation
+
+# Build rule for target.
+Gearsimulation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Gearsimulation
+.PHONY : Gearsimulation
+
+# fast build rule for target.
+Gearsimulation/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Gearsimulation.dir/build.make CMakeFiles/Gearsimulation.dir/build
+.PHONY : Gearsimulation/fast
+
 src/Gear.o: src/Gear.cpp.o
 .PHONY : src/Gear.o
 
 # target to build an object file
 src/Gear.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Gearsimulation.dir/build.make CMakeFiles/Gearsimulation.dir/src/Gear.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/Gear.cpp.o
 .PHONY : src/Gear.cpp.o
 
@@ -156,7 +155,6 @@ src/Gear.i: src/Gear.cpp.i
 
 # target to preprocess a source file
 src/Gear.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Gearsimulation.dir/build.make CMakeFiles/Gearsimulation.dir/src/Gear.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/Gear.cpp.i
 .PHONY : src/Gear.cpp.i
 
@@ -165,7 +163,6 @@ src/Gear.s: src/Gear.cpp.s
 
 # target to generate assembly for a file
 src/Gear.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Gearsimulation.dir/build.make CMakeFiles/Gearsimulation.dir/src/Gear.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyLibrary.dir/build.make CMakeFiles/MyLibrary.dir/src/Gear.cpp.s
 .PHONY : src/Gear.cpp.s
 

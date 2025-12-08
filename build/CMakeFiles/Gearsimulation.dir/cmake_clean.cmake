@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Gearsimulation.dir/link.d"
-  "CMakeFiles/Gearsimulation.dir/src/Gear.cpp.o"
-  "CMakeFiles/Gearsimulation.dir/src/Gear.cpp.o.d"
   "CMakeFiles/Gearsimulation.dir/src/main.cpp.o"
   "CMakeFiles/Gearsimulation.dir/src/main.cpp.o.d"
   "Gearsimulation"

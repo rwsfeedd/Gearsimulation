@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cmath>
 #include <SFML/Graphics.hpp>
-//#include "include/Gear.hpp"
+#include "Gear.hpp"
 
 using namespace std;
 
 int main() {
 	cout << "Zahnradsimulation starten!" << endl;
-	//Gear g1(2,4.3);
+	Gear g1(2,4.3);
 	//cout << g1.getTeeth() + 3.14*cos(180/3.14) << endl;
 
 	sf::RenderWindow window(sf::VideoMode({500,500}), "SFML works!");
