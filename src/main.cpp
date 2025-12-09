@@ -87,8 +87,9 @@ int main() {
 
 	//Variable die angibt wie viele Punkte gemalt werden sollen.
 	//Case 0: no teeth -> numbPoints = 0 -> only the headcircle is drawn
-	//Case 1: spike teeth -> numbPoints = numbTeeth + pointsBetweenTeeth = 2 * numbTeeth
-	int numbPoints = 2 * z; //ist mit z = 8 -> 16
+	//Case 1: spike teeth with 1 Point per tooth -> numbPoints = numbTeeth + pointsBetweenTeeth = 2 * numbTeeth
+	//Case 2: better teeth with 2 Points per tooth -> numbPoints = 2 * numbTeeth + pointsBetweenTeeth = 3 * numbTeeth
+	int numbPoints = 3 * z;
 
 	sf::ConvexShape gear;
 
@@ -101,13 +102,32 @@ int main() {
 	//gear.setPoint(1, {midX + (df / 2), midY});
 	
 	//rad = (sp/d); 
-	rad = 2*PI/16;	
 	for(int i = 0; i < numbPoints; i++) {
-		if(i % 2 == 0){
-			gear.setPoint(i, {midX + ((da / 2) * cos((i * rad))), midY - ((da / 2) * sin(i * rad))});
+		if(numbPoints == 2*z) {
+			rad = 2*PI/16;	
+
+			if(i % 2 == 1){
+				gear.setPoint(i, {midX + ((da / 2) * cos((i * rad))), midY - ((da / 2) * sin(i * rad))});
+				continue;
+			}
+			gear.setPoint(i, {midX + ((df / 2) * cos((i * rad))), midY - ((df / 2) * sin(i * rad))});
 			continue;
 		}
-		gear.setPoint(i, {midX + ((df / 2) * cos((i * rad))), midY - ((df / 2) * sin(i * rad))});
+
+		if(numbPoints == 3*z) {
+			rad = 2*PI/8;	
+
+			switch(i % 3){
+				case 1: //first Point of teeth
+					gear.setPoint(i, {midX + ((da / 2) * cos((((i-1)/3) * rad)+(rad/3))), midY - ((da / 2) * sin((((i-1)/3) * rad)+(rad/3)))});
+					break;
+				case 2: //second Point of teeth
+					gear.setPoint(i, {midX + ((da / 2) * cos((((i-2)/3) * rad)+2*(rad/3))), midY - ((da / 2) * sin((((i-2)/3) * rad)+2*(rad/3)))});
+					break;
+				default: //case for 0 and 3. Is a Point between teeth
+					gear.setPoint(i, {midX + ((df / 2) * cos(((i/3) * rad))), midY - ((df / 2) * sin((i/3) * rad))});
+			}
+		}
 	}
 	//rad = -((5/3)*sp)/(PI*da*da);
 	rad = - 0.5 * PI;	
