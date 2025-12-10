@@ -7,12 +7,13 @@ using namespace std;
 
 int main() {
 	cout << "Zahnradsimulation starten!" << endl;
-	Gear g1(2,4.3);
-	//cout << g1.getTeeth() + 3.14*cos(180/3.14) << endl;
+	Gear gearTest(8, 100.f);
+	//sf::ConvexShape gearShape = gearTest.getShape();
+	//gearTest.setPosition({400, 400});
+	cout << gearTest.getString() << endl;
 
 	sf::RenderWindow window(sf::VideoMode({500,500}), "SFML works!");
 
-	
 	float PI = 3.1416;
 
 	//z muss mindestens 2 sein
@@ -41,22 +42,6 @@ int main() {
 	p = m * PI;
 	sp = p / 2;
 	h = 2 * m;
-	h = 75.f;	
-
-	cout << "Ausgabe Zahnradmaße: m=" << m 
-		<< ",c=" << c 
-	   	<< ",h=" << h 
-	   	<< ",hf=" << hf 
-	   	<< ",ha=" << ha 
-	   	<< ",df=" << df
-		<< ",da=" << da 
-		<< ",p=" << p
-		<< ",sp=" << sp << endl; 
-
-	//Kreisumfang = 2 * PI * r
-	//(Bogenmaß) 1 Radiant = 180Grad/PI
-	//y = sin t
-	//x = cos t
 
 	//Teilkreis definieren
 	sf::CircleShape partCircle(d / 2);
@@ -85,68 +70,6 @@ int main() {
 		lines[i].setPosition({midX, midY});
 	}
 
-	//Variable die angibt wie viele Punkte gemalt werden sollen.
-	//Case 0: no teeth -> numbPoints = 0 -> only the headcircle is drawn
-	//Case 1: spike teeth with 1 Point per tooth -> numbPoints = numbTeeth + pointsBetweenTeeth = 2 * numbTeeth
-	//Case 2: better teeth with 2 Points per tooth -> numbPoints = 2 * numbTeeth + pointsBetweenTeeth = 3 * numbTeeth
-	int numbPoints = 3 * z;
-
-	sf::ConvexShape gear;
-
-	//should later be used with Variable numbPoints
-	gear.setPointCount(numbPoints);
-
-	float rad = 0.f;
-
-	//gear.setPoint(0, {midX, midY});
-	//gear.setPoint(1, {midX + (df / 2), midY});
-	
-	//rad = (sp/d); 
-	for(int i = 0; i < numbPoints; i++) {
-		if(numbPoints == 2*z) {
-			rad = 2*PI/16;	
-
-			if(i % 2 == 1){
-				gear.setPoint(i, {midX + ((da / 2) * cos((i * rad))), midY - ((da / 2) * sin(i * rad))});
-				continue;
-			}
-			gear.setPoint(i, {midX + ((df / 2) * cos((i * rad))), midY - ((df / 2) * sin(i * rad))});
-			continue;
-		}
-
-		if(numbPoints == 3*z) {
-			rad = 2*PI/8;	
-
-			switch(i % 3){
-				case 1: //first Point of teeth
-					gear.setPoint(i, {midX + ((da / 2) * cos((((i-1)/3) * rad)+(rad/3))), midY - ((da / 2) * sin((((i-1)/3) * rad)+(rad/3)))});
-					break;
-				case 2: //second Point of teeth
-					gear.setPoint(i, {midX + ((da / 2) * cos((((i-2)/3) * rad)+2*(rad/3))), midY - ((da / 2) * sin((((i-2)/3) * rad)+2*(rad/3)))});
-					break;
-				default: //case for 0 and 3. Is a Point between teeth
-					gear.setPoint(i, {midX + ((df / 2) * cos(((i/3) * rad))), midY - ((df / 2) * sin((i/3) * rad))});
-			}
-		}
-	}
-	//rad = -((5/3)*sp)/(PI*da*da);
-	rad = - 0.5 * PI;	
-	//gear.setPoint(3, {midX + ((da / 2) * cos(rad)), midY + ((da / 2) * sin(rad))});
-	//gear.setPoint(2, {midX + (d / 2 * cos((sp * PI)/(PI * d))), midY + (d / 2 * sin((sp * PI)/(PI * d)))});
-	//gear.setPoint(1, {midX + cos(), };	
-	//
-
-	/* Code für einen Kreis mit 4 Punkten
-	for(int i = 0; i < 4; i++) {
-		float x = midX + (df / 2 * cos((i+1)*0.5*PI));
-		float y = midY + (df / 2 * sin((i+1)*0.5*PI));
-		cout << "Punkt " + to_string(i) + ":x=" + to_string(x) + "|y=" + to_string(y) << endl;
-		gear.setPoint(i, {x, y});
-	}
-	*/
-	
-	//gear.setFillColor(sf::Color::Green);
-
 	while (window.isOpen()) {
 		while (const std::optional event = window.pollEvent()){
 			if (event->is<sf::Event::Closed>())
@@ -158,7 +81,7 @@ int main() {
 		window.draw(partCircle);
 		window.draw(footCircle);
 		window.draw(headCircle);
-		window.draw(gear);
+		window.draw(gearTest.getShape());
 		for(int i = 0; i < 8; i++){
 			window.draw(lines[i]);
 		}
