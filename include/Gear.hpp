@@ -22,7 +22,7 @@ class Gear {
 		int getTeeth() const;
 		float getDiametre() const;
 		float getClearance() const;
-		sf::ConvexShape getShape() const;
+		sf::ConvexShape getShape();
 		string getString() const;
 		
 };

@@ -28,7 +28,7 @@ float Gear::getClearance() const{
 	return clearance;
 }
 
-sf::ConvexShape Gear::getShape() const{
+sf::ConvexShape Gear::getShape() {
 	sf::ConvexShape retShape;
 
 	//numbPoints directs how many Points of the Gear will be drawn
@@ -80,7 +80,7 @@ sf::ConvexShape Gear::getShape() const{
 		}
 	}
 
-	//retShape.setOrigin({diametre/2, diametre/2});
+	retShape.setOrigin({diametre/2, diametre/2});
 
 	return retShape;
 }
